@@ -15,6 +15,7 @@
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
+import java.sql.SQLOutput;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -42,7 +43,9 @@ public class BasicGameApp implements Runnable {
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Astronaut astro;
+	public Astronaut astro;
+	public Astronaut astro2;
+	public int randnumber;
 
 
    // Main method definition
@@ -57,14 +60,23 @@ public class BasicGameApp implements Runnable {
    // This has the same name as the class
    // This section is the setup portion of the program
    // Initialize your variables and construct your program objects here.
+
 	public BasicGameApp() {
       
       setUpGraphics();
-       
+       randnumber = (int)(Math.random() * 10)+1;
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
 		astro = new Astronaut(10,100);
+		astro2 = new Astronaut(300,10);
+		System.out.println(astro.dx);
+		astro.dx= 25;
+		astro2.dy= randnumber;
+
+		//todo: give astro2 a random number between [1-10]
+
+
 
 
 	}// BasicGameApp()
@@ -93,7 +105,7 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		astro.move();
-
+		astro2.move();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -144,6 +156,7 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(astroPic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
 
 		g.dispose();
 
