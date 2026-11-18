@@ -14,7 +14,8 @@ public class Astronaut {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;//a boolean to denote if the hero is alive or dead.
+    public Rectangle hitbox;
 
 
     // METHOD DEFINITION SECTION
@@ -33,6 +34,7 @@ public class Astronaut {
         width = 100;
         height = 50;
         isAlive = true;
+        hitbox= new Rectangle(xpos, ypos, width, height);
  
     } // constructor
 
@@ -42,6 +44,7 @@ public class Astronaut {
         xpos = xpos + dx;
         ypos = ypos + dy;
         System.out.println(xpos);
+        hitbox= new Rectangle(xpos, ypos, width, height);
  
     }
 
