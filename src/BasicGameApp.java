@@ -118,7 +118,7 @@ public class BasicGameApp implements Runnable {
 	}
 
 	public void crashing(){
-		if(astro.hitbox.intersects(astro2.hitbox)){
+		if(astro.hitbox.intersects(astro2.hitbox)&& astro.isCrashing == false){//when they are intersecting
 			System.out.println("crash");
 			astro.dx=-astro.dx;
 			astro2.dx=-astro2.dx;
@@ -127,8 +127,14 @@ public class BasicGameApp implements Runnable {
 			astro2.width= astro2.width + 5;
 			astro2.height=astro2.height + 5;
 
+			astro.isCrashing = true;
 
 		}
+
+		if(!astro.hitbox.intersects(astro2.hitbox)){//when they are not intersecting
+			astro.isCrashing = false;
+		}
+
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
